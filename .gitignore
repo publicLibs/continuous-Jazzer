@@ -1,0 +1,5 @@
+.project
+.settings/
+.classpath
+continuousJazzer-agent/src/main/resources/fuzzer-hooks-jar-with-dependencies.jar
+target/
