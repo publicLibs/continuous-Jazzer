@@ -18,6 +18,10 @@
 			<version>main-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>com.code-intelligence</groupId>
+			<artifactId>jazzer</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.github.publicLibs</groupId>
 			<artifactId>continuousJazzer-hooks</artifactId>
 			<version>main-SNAPSHOT</version>

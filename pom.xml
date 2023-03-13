@@ -25,10 +25,6 @@
 		</dependency>
 		<dependency>
 			<groupId>com.code-intelligence</groupId>
-			<artifactId>jazzer</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.code-intelligence</groupId>
 			<artifactId>jazzer-api</artifactId>
 		</dependency>
 		<dependency>

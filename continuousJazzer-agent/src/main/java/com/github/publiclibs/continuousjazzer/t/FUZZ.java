@@ -26,6 +26,7 @@ import org.apache.commons.lang3.SystemUtils;
 import com.github.publicLibs.freedom1b2830.awesomeio.ResourcesIoUtils;
 import com.github.publiclibs.continuousjazzer.ContinuousJazzerAgent;
 import com.github.publiclibs.continuousjazzer.config.JazzerAgentConfig;
+import com.github.publiclibs.continuousjazzer.hooks.ScannerHook;
 
 /**
  * @author freedom1b2830
@@ -153,6 +154,7 @@ public class FUZZ {
 				}
 			}
 		}
+		config.addHook(ScannerHook.class);
 
 		for (final String target : config.targets) {
 

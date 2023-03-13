@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import com.code_intelligence.jazzer.Jazzer;
 import com.github.publiclibs.continuousjazzer.ContinuousJazzerAgent;
 import com.github.publiclibs.continuousjazzer.config.JazzerAgentConfig;
 
@@ -74,7 +73,7 @@ public class RUN {
 			System.err.println("COMPLETE:" + string);
 		}
 
-		Jazzer.main(completeArgs);
+		// Jazzer.main(completeArgs);
 
 	}
 
