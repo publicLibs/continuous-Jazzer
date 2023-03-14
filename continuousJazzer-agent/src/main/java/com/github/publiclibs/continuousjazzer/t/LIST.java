@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,6 +18,7 @@ import java.util.stream.Stream;
 import com.github.publiclibs.continuousjazzer.ContinuousJazzerAgent;
 import com.github.publiclibs.continuousjazzer.classpath.ClassPathUtils;
 import com.github.publiclibs.continuousjazzer.config.JazzerAgentConfig;
+import com.github.publiclibs.continuousjazzer.hooks.ScannerHook;
 import com.github.publiclibs.listofsignatures.Listofsignatures;
 
 /**
@@ -58,6 +60,16 @@ public class LIST {
 
 		config.targets = signs;
 
+		final CopyOnWriteArrayList<String> exceptionsExclude = new CopyOnWriteArrayList<>();
+		for (final String sign : signs) {
+			final String part1 = sign.split("::")[0];
+			if (part1.toLowerCase().contains("exception")) {
+				exceptionsExclude.addIfAbsent(part1);
+			}
+		}
+		exceptionsExclude.addAllAbsent(Arrays.asList(config.ignoreExcepts));
+		config.ignoreExcepts = exceptionsExclude.toArray(new String[exceptionsExclude.size()]);
+
 		final CopyOnWriteArrayList<String> cpStrings = new CopyOnWriteArrayList<>();
 		for (final Path path : jars) {
 			if (Files.isDirectory(path)) {
@@ -76,6 +88,8 @@ public class LIST {
 			System.out.println("cpStrings:" + string);
 		}
 		config.cp = cpStrings;
+
+		config.addHook(ScannerHook.class);
 
 		final Path confPath = Paths.get("config.yaml");
 		if (Files.notExists(confPath)) {
